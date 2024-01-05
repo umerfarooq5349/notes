@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 100,
+                height: 80,
               ),
               Text(
                 "Let's sign you in",
@@ -47,132 +47,181 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                "User name",
-                style: AppStyle.mainContent.copyWith(color: AppStyle.purpule),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              TextField(
-                cursorColor: AppStyle.purpule,
-                controller: userName,
-                style: AppStyle.mainContent.copyWith(color: AppStyle.purpule),
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  hintText: "user_name",
-                  hintStyle:
-                      AppStyle.hintText.copyWith(color: AppStyle.purpule),
-                  enabled: true,
-                  filled: true,
-                  fillColor: AppStyle.purpule.withOpacity(0.03),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 2, color: AppStyle.purpule),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "User name",
+                    style:
+                        AppStyle.mainContent.copyWith(color: AppStyle.purpule),
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 2, color: AppStyle.purpule),
+                  const SizedBox(
+                    height: 8,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 2, color: AppStyle.purpule),
+                  TextField(
+                    cursorColor: AppStyle.purpule,
+                    controller: userName,
+                    style:
+                        AppStyle.mainContent.copyWith(color: AppStyle.purpule),
+                    keyboardType: TextInputType.name,
+                    decoration: InputDecoration(
+                      hintText: "user_name",
+                      hintStyle:
+                          AppStyle.hintText.copyWith(color: AppStyle.purpule),
+                      enabled: true,
+                      filled: true,
+                      fillColor: AppStyle.purpule.withOpacity(0.03),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            BorderSide(width: 2, color: AppStyle.purpule),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            BorderSide(width: 2, color: AppStyle.purpule),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            BorderSide(width: 2, color: AppStyle.purpule),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                "Password",
-                style: AppStyle.mainContent.copyWith(color: AppStyle.purpule),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              TextField(
-                cursorColor: AppStyle.purpule,
-                controller: password,
-                obscureText: showpass,
-                style: AppStyle.mainContent.copyWith(color: AppStyle.purpule),
-                keyboardType: TextInputType.name,
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        if (showpass) {
-                          showpass = false;
-                        } else {
-                          showpass = true;
-                        }
-                      });
-                    },
-                    icon: const Icon(Icons.lock),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Password",
+                    style:
+                        AppStyle.mainContent.copyWith(color: AppStyle.purpule),
                   ),
-                  enabled: true,
-                  filled: true,
-                  fillColor: AppStyle.purpule.withOpacity(0.03),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 2, color: AppStyle.purpule),
+                  const SizedBox(
+                    height: 8,
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 2, color: AppStyle.purpule),
+                  TextField(
+                    cursorColor: AppStyle.purpule,
+                    controller: password,
+                    obscureText: showpass,
+                    style:
+                        AppStyle.mainContent.copyWith(color: AppStyle.purpule),
+                    keyboardType: TextInputType.name,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            if (showpass) {
+                              showpass = false;
+                            } else {
+                              showpass = true;
+                            }
+                          });
+                        },
+                        icon: const Icon(Icons.lock),
+                      ),
+                      enabled: true,
+                      filled: true,
+                      fillColor: AppStyle.purpule.withOpacity(0.03),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            BorderSide(width: 2, color: AppStyle.purpule),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            BorderSide(width: 2, color: AppStyle.purpule),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide:
+                            BorderSide(width: 2, color: AppStyle.purpule),
+                      ),
+                    ),
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
-                    borderSide: BorderSide(width: 2, color: AppStyle.purpule),
-                  ),
-                ),
+                ],
               ),
               const SizedBox(
                 height: 12,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                    style: const ButtonStyle(
-                      padding: MaterialStatePropertyAll(
-                        EdgeInsets.all(0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        style: const ButtonStyle(
+                          padding: MaterialStatePropertyAll(
+                            EdgeInsets.all(0),
+                          ),
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          "Forget Password",
+                          style: AppStyle.mainTitle
+                              .copyWith(fontSize: 16, color: AppStyle.purpule),
+                        ),
                       ),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "Forget Password",
-                      style: AppStyle.mainTitle
-                          .copyWith(fontSize: 16, color: AppStyle.purpule),
-                    ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account?",
+                        style: AppStyle.mainContent
+                            .copyWith(color: AppStyle.purpule),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Sign Up",
+                          style: AppStyle.mainTitle
+                              .copyWith(fontSize: 16, color: AppStyle.purpule),
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account?",
-                    style:
-                        AppStyle.mainContent.copyWith(color: AppStyle.purpule),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Login",
+                    style: AppStyle.appBar.copyWith(fontSize: 20),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Sign Up",
-                      style: AppStyle.mainTitle
-                          .copyWith(fontSize: 16, color: AppStyle.purpule),
-                    ),
-                  )
-                ],
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  "Login ",
-                  style: AppStyle.mainTitle,
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 26,
+              ),
+              Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: AppStyle.purpule),
+                    borderRadius: BorderRadius.circular(16)),
+                child: ElevatedButton(
+                  style: const ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(Colors.transparent),
+                      elevation: MaterialStatePropertyAll(0)),
+                  onPressed: () {},
+                  child: Text(
+                    "Sign in with Google",
+                    style: AppStyle.mainContent
+                        .copyWith(fontSize: 20, color: AppStyle.purpule),
+                  ),
+                ),
+              ),
             ],
           ),
         ]),
