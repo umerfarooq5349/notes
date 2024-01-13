@@ -3,22 +3,19 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle {
   static Color whiteColor = const Color(0xffffffff);
-  static Color mainColor = const Color(0xffD6EBFF);
-  static Color accentColor = const Color(0xff0065ff);
   static Color bgColor = const Color(0xFFC0B4EB);
-
+  static Color brown = const Color(0xFF473B2D);
   static List<List<Color>> gradients = [
     [const Color(0xFF6448FE), const Color(0xFF5FC6FF)],
-    [const Color(0xFF61A3FE), const Color(0xFF63FFD5)],
-    [const Color(0xFF708090), const Color(0xFFFF8484)],
-    [const Color(0xff764BA2), const Color(0xFF667EEA)]
   ];
+  static Color success = const Color(0xFF00FF33);
+  static Color error = const Color(0xFFFF0000);
   static List<Color> bgGradient = [
     const Color(0xFF4776E6),
     const Color(0xFF8E54E9)
   ];
 
-  static Color purpule = const Color(0xFF473B2D);
+  static Color purpule = const Color(0xFF8E54E9);
   static TextStyle appBar = GoogleFonts.aDLaMDisplay(
       fontSize: 28, fontWeight: FontWeight.bold, color: whiteColor);
   static TextStyle mainTitle = GoogleFonts.roboto(
@@ -33,4 +30,22 @@ class AppStyle {
 
   static TextStyle date = GoogleFonts.roboto(
       fontSize: 12, fontWeight: FontWeight.w500, color: whiteColor);
+}
+
+class CustomDivider extends StatelessWidget {
+  const CustomDivider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.01),
+      alignment: Alignment.center,
+      child: Divider(
+        color: AppStyle.purpule,
+        thickness: MediaQuery.of(context).size.width * 0.002,
+        endIndent: MediaQuery.of(context).size.width * 0.01,
+      ),
+    );
+  }
 }

@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:notes/styles/app_styles.dart';
@@ -25,15 +24,18 @@ class ReadNoteScreen extends StatefulWidget {
 }
 
 class _ReadNoteScreenState extends State<ReadNoteScreen> {
-  final readNote = FirebaseFirestore.instance.collection('notes');
+  var readNote;
   final editTitle = TextEditingController();
   final editBody = TextEditingController();
-  int random = Random().nextInt(7);
-
+  final auth = FirebaseAuth.instance;
+  var userId;
   @override
   void initState() {
     super.initState();
-
+    if (auth.currentUser != null) {
+      userId = auth.currentUser!.uid;
+    }
+    readNote = FirebaseFirestore.instance.collection("$userId\notes");
     editBody.text = widget.body;
     editTitle.text = widget.title;
   }
@@ -58,9 +60,9 @@ class _ReadNoteScreenState extends State<ReadNoteScreen> {
                 'id': widget.id,
                 'date': DateFormat('EEEE, MMM d, yyyy').format(DateTime.now()),
               }).then((value) {
-                Utils().toastMassage('Updated', Colors.green);
-              }).onError((error, stackTrace) {
-                Utils().toastMassage(error.toString(), Colors.red);
+                Utils().toastMassage('Updated', AppStyle.purpule);
+              }).catchError((error, stackTrace) {
+                Utils().toastMassage(error.toString(), AppStyle.error);
               });
             },
             child: Text(

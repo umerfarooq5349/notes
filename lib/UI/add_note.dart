@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,22 @@ class AddNoteScreen extends StatefulWidget {
 }
 
 class _AddNoteScreenState extends State<AddNoteScreen> {
-  final readNote = FirebaseFirestore.instance.collection('notes');
+  var readNote;
   final editTitle = TextEditingController();
   final editBody = TextEditingController();
   int random = Random().nextInt(7);
   String id = DateTime.now().millisecond.toString();
+  final auth = FirebaseAuth.instance;
+  var userId;
+  bool saving = false;
+  @override
+  void initState() {
+    if (auth.currentUser != null) {
+      userId = auth.currentUser!.uid;
+    }
+    readNote = FirebaseFirestore.instance.collection("$userId\notes");
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +47,32 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
             style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(Colors.amber)),
             onPressed: () {
+              setState(() {
+                saving = true;
+              });
               readNote.doc(id).set({
                 'id': id,
                 'title': editTitle.text,
                 'body': editBody.text,
                 'date': DateFormat('EEEE, MMM d, yyyy').format(DateTime.now()),
               }).then((value) {
-                Utils().toastMassage('Saved', Colors.green);
-              }).onError((error, stackTrace) {
+                setState(() {
+                  saving = false;
+                });
+                Utils().toastMassage('Saved', AppStyle.purpule);
+              }).catchError((error) {
                 Utils().toastMassage(error.toString(), Colors.red);
+                setState(() {
+                  saving = false;
+                });
               });
             },
-            child: Text(
-              'Save',
-              style: AppStyle.mainTitle,
-            ),
+            child: !saving
+                ? Text(
+                    'Save',
+                    style: AppStyle.mainTitle,
+                  )
+                : CircularProgressIndicator(color: AppStyle.whiteColor),
           ),
           const SizedBox(width: 20),
         ],
