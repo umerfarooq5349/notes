@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as p;
-
 import 'package:notes/UI/add_note.dart';
 import 'package:notes/UI/auth/login.dart';
 import 'package:notes/UI/notes/read_notes.dart';
@@ -256,6 +254,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          // ignore: avoid_print
+          print(auth.currentUser!.providerData);
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return const AddNoteScreen();

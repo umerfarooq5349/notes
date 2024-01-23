@@ -29,7 +29,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: ListView(children: [
           Form(
             key: key,
-            autovalidateMode: AutovalidateMode.always,
             child: Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -268,7 +267,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         backgroundColor:
                             MaterialStatePropertyAll(AppStyle.purpule)),
                     onPressed: () {
-                     
                       signUp();
                     },
                     child: loading
