@@ -16,7 +16,7 @@ Follow these steps to set up and run the Notes app on your local machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/notes-app.git
+   git clone https://github.com/umerfarooq5349/notes.git
    ```
 
 2. **Navigate to the project directory:**
@@ -72,13 +72,11 @@ The Notes app utilizes Firebase for data storage. To connect your own Firebase p
 2. **Obtain your Firebase configuration:**
 
    - Go to Project Settings in the Firebase Console.
-   - Under the "Your apps" section, select the web app.
-   - Copy the configuration object.
+   - Under the "Your apps" section, select the *Flutter app.*
+   - Follow the instructions.
 
 3. **Replace the Firebase configuration in the app:**
 
-   - Open the `src/firebase.js` file.
-   - Replace the existing Firebase configuration with your copied configuration.
 
 Now, your Notes app will be connected to your own Firebase project.
 
